@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+<title>神舟24 · 历史性的早晨</title>
+<style>
+  * { margin: 0; padding: 0; box-sizing: border-box; -webkit-tap-highlight-color: transparent; }
+  html, body { height: 100%; background: #0b1f3a; font-family: -apple-system, "Microsoft YaHei", sans-serif; }
+
+  /* 整个页面: 垂直堆叠, 每屏一张图 */
+  .deck {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 12px 0 40px;
+    gap: 12px;
+  }
+  .slide {
+    width: 100%;
+    max-width: 480px;   /* 竖版原图宽 */
+    display: block;
+    border-radius: 6px;
+    box-shadow: 0 2px 18px rgba(0,0,0,.45);
+    background: #fff;
+  }
+
+  /* 顶部标题条 */
+  .header {
+    position: sticky; top: 0; z-index: 9;
+    background: linear-gradient(180deg, rgba(11,31,58,.97), rgba(11,31,58,.6));
+    width: 100%; padding: 12px 16px;
+    display: flex; align-items: center; justify-content: space-between;
+    backdrop-filter: blur(6px);
+  }
+  .header h1 {
+    font-size: 15px; color: #ffb347; font-weight: 700;
+  }
+  .header .meta {
+    font-size: 11px; color: #4a90e2;
+  }
+
+  /* 底部浮层: 页进度 */
+  .progress {
+    position: fixed; right: 10px; bottom: 24px; z-index: 9;
+    background: rgba(255,107,53,.92); color: #fff;
+    padding: 6px 12px; border-radius: 20px;
+    font-size: 12px; font-weight: 700;
+    box-shadow: 0 3px 12px rgba(255,107,53,.5);
+    transition: opacity .3s;
+  }
+  .progress.hide { opacity: 0; }
+
+  /* 简易翻页按钮 (可选) */
+  .nav {
+    position: fixed; bottom: 20px; left: 0; right: 0; z-index: 10;
+    display: none; justify-content: space-between; padding: 0 12px;
+  }
+  body.touch-mode .nav { display: flex; }
+  .nav button {
+    background: rgba(255,107,53,.9); color: #fff; border: none;
+    padding: 10px 16px; border-radius: 22px; font-size: 14px;
+    font-weight: 600; box-shadow: 0 2px 10px rgba(0,0,0,.4);
+  }
+  .nav button:active { transform: scale(.95); }
+  .nav button[disabled] { opacity: .4; }
+
+  /* 底部下载按钮 */
+  .footer {
+    text-align: center; padding: 20px;
+  }
+  .footer a {
+    display: inline-block; background: #ff6b35; color: #fff;
+    padding: 10px 22px; border-radius: 22px; font-size: 14px;
+    text-decoration: none; font-weight: 600;
+    box-shadow: 0 3px 10px rgba(255,107,53,.5);
+  }
+</style>
+</head>
+<body>
+
+<div class="header">
+  <h1>🚀 神舟24 · 历史性的早晨</h1>
+  <span class="meta">2026.11.25</span>
+</div>
+
+<div class="deck" id="deck">
+  <img class="slide" src="01_封面_神舟24发射成功.png" alt="封面" loading="lazy">
+  <img class="slide" src="02_发射纪实_朝霞伴飞.png" alt="发射纪实" loading="lazy">
+  <img class="slide" src="03_乘组三人_汤洪波武毅齐尚阿里.png" alt="乘组三人" loading="lazy">
+  <img class="slide" src="04_趣事_中文词表.png" alt="中文词表趣事" loading="lazy">
+  <img class="slide" src="05_载入史册_4个首次.png" alt="4个首次" loading="lazy">
+  <img class="slide" src="06_训练_沙漠洞穴72小时.png" alt="训练故事" loading="lazy">
+  <img class="slide" src="07_为什么是巴基斯坦.png" alt="战略选择" loading="lazy">
+  <img class="slide" src="08_4项联合科学实验.png" alt="联合实验" loading="lazy">
+  <img class="slide" src="09_结尾_没有国界的星辰大海.png" alt="结尾" loading="lazy">
+</div>
+
+<div class="progress" id="progress">1 / 9</div>
+
+<div class="footer">
+  <a href="神舟24_历史性的早晨.pptx" download>📥 下载 PPTX 源文件</a>
+</div>
+
+<script>
+  // 简单的滚动进度提示
+  const slides = document.querySelectorAll('.slide');
+  const prog = document.getElementById('progress');
+  let hideTimer;
+
+  function updateProgress() {
+    const h = window.innerHeight;
+    let idx = 0;
+    slides.forEach((el, i) => {
+      const r = el.getBoundingClientRect();
+      if (r.top + r.height / 2 < h * 0.7) idx = i + 1;
+    });
+    prog.textContent = idx + ' / ' + slides.length;
+    prog.classList.remove('hide');
+    clearTimeout(hideTimer);
+    hideTimer = setTimeout(() => prog.classList.add('hide'), 1500);
+  }
+  window.addEventListener('scroll', updateProgress, { passive: true });
+  window.addEventListener('resize', updateProgress);
+  updateProgress();
+
+  // 禁止双击缩放 & 双击快速跳下一张
+  let lastTap = 0;
+  document.addEventListener('touchend', (e) => {
+    const now = Date.now();
+    if (now - lastTap < 300) {
+      // 双击切换到最接近下一张的slide
+      const h = window.innerHeight;
+      for (let i = 0; i < slides.length; i++) {
+        const r = slides[i].getBoundingClientRect();
+        if (r.top >= 0 && r.top < h * 0.5) {
+          if (i < slides.length - 1) {
+            slides[i + 1].scrollIntoView({ behavior: 'smooth', block: 'start' });
+          }
+          e.preventDefault();
+          break;
+        }
+      }
+    }
+    lastTap = now;
+  });
+</script>
+
+</body>
+</html>
