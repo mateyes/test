@@ -1,0 +1,40 @@
+tb/tb_axi_lite_mac_ctrl.vhd:121:7:@50ns:(report note): [PASS] reset: all channels ready
+tb/tb_axi_lite_mac_ctrl.vhd:121:7:@50ns:(report note): [PASS] reset: no pending response
+tb/tb_axi_lite_mac_ctrl.vhd:121:7:@85ns:(report note): [PASS] write 0x0500 Setup (resp)
+tb/tb_axi_lite_mac_ctrl.vhd:121:7:@135ns:(report note): [PASS] read 0x0500 Setup (resp)
+tb/tb_axi_lite_mac_ctrl.vhd:121:7:@135ns:(report note): [PASS] read 0x0500 Setup (data)
+tb/tb_axi_lite_mac_ctrl.vhd:121:7:@155ns:(report note): [PASS] MDIO enable & clk divider
+tb/tb_axi_lite_mac_ctrl.vhd:121:7:@185ns:(report note): [PASS] write 0x0508 WriteData (resp)
+tb/tb_axi_lite_mac_ctrl.vhd:121:7:@235ns:(report note): [PASS] read 0x0508 WriteData (resp)
+tb/tb_axi_lite_mac_ctrl.vhd:121:7:@235ns:(report note): [PASS] read 0x0508 WriteData (data)
+tb/tb_axi_lite_mac_ctrl.vhd:121:7:@255ns:(report note): [PASS] MDIO write data output
+tb/tb_axi_lite_mac_ctrl.vhd:121:7:@285ns:(report note): [PASS] byte-strobe write 0x0508 (resp)
+tb/tb_axi_lite_mac_ctrl.vhd:121:7:@335ns:(report note): [PASS] read-back after byte strobe (resp)
+tb/tb_axi_lite_mac_ctrl.vhd:121:7:@335ns:(report note): [PASS] read-back after byte strobe (data)
+tb/tb_axi_lite_mac_ctrl.vhd:121:7:@385ns:(report note): [PASS] write 0x0504 Control + start (resp)
+tb/tb_axi_lite_mac_ctrl.vhd:121:7:@405ns:(report note): [PASS] start pulse generated once
+tb/tb_axi_lite_mac_ctrl.vhd:121:7:@405ns:(report note): [PASS] PHYAD/REGAD/OP outputs
+tb/tb_axi_lite_mac_ctrl.vhd:121:7:@435ns:(report note): [PASS] read 0x0504 (start self-clear) (resp)
+tb/tb_axi_lite_mac_ctrl.vhd:121:7:@435ns:(report note): [PASS] read 0x0504 (start self-clear) (data)
+tb/tb_axi_lite_mac_ctrl.vhd:121:7:@485ns:(report note): [PASS] write 0x0504 without start (resp)
+tb/tb_axi_lite_mac_ctrl.vhd:121:7:@505ns:(report note): [PASS] no start pulse without initiate
+tb/tb_axi_lite_mac_ctrl.vhd:121:7:@535ns:(report note): [PASS] read 0x0504 (OP=write) (resp)
+tb/tb_axi_lite_mac_ctrl.vhd:121:7:@535ns:(report note): [PASS] read 0x0504 (OP=write) (data)
+tb/tb_axi_lite_mac_ctrl.vhd:121:7:@585ns:(report note): [PASS] read 0x050C ReadData (resp)
+tb/tb_axi_lite_mac_ctrl.vhd:121:7:@585ns:(report note): [PASS] read 0x050C ReadData (data)
+tb/tb_axi_lite_mac_ctrl.vhd:121:7:@645ns:(report note): [PASS] read 0x050C when ready=0 (resp)
+tb/tb_axi_lite_mac_ctrl.vhd:121:7:@645ns:(report note): [PASS] read 0x050C when ready=0 (data)
+tb/tb_axi_lite_mac_ctrl.vhd:121:7:@695ns:(report note): [PASS] read 0x0504 when ready=0 (resp)
+tb/tb_axi_lite_mac_ctrl.vhd:121:7:@695ns:(report note): [PASS] read 0x0504 when ready=0 (data)
+tb/tb_axi_lite_mac_ctrl.vhd:121:7:@755ns:(report note): [PASS] write unmapped 0x0600 (resp)
+tb/tb_axi_lite_mac_ctrl.vhd:121:7:@805ns:(report note): [PASS] read unmapped 0x0600 (resp)
+tb/tb_axi_lite_mac_ctrl.vhd:121:7:@855ns:(report note): [PASS] write outside window 0x0518 (resp)
+tb/tb_axi_lite_mac_ctrl.vhd:121:7:@905ns:(report note): [PASS] read outside window 0x0518 (resp)
+tb/tb_axi_lite_mac_ctrl.vhd:121:7:@955ns:(report note): [PASS] write 0x0500 with wstrb=0000 (resp)
+tb/tb_axi_lite_mac_ctrl.vhd:121:7:@1005ns:(report note): [PASS] confirm 0x0500 unchanged (resp)
+tb/tb_axi_lite_mac_ctrl.vhd:121:7:@1005ns:(report note): [PASS] confirm 0x0500 unchanged (data)
+tb/tb_axi_lite_mac_ctrl.vhd:121:7:@1095ns:(report note): [PASS] split AW/W write 0x0508 (resp)
+tb/tb_axi_lite_mac_ctrl.vhd:121:7:@1145ns:(report note): [PASS] read after split write (resp)
+tb/tb_axi_lite_mac_ctrl.vhd:121:7:@1145ns:(report note): [PASS] read after split write (data)
+tb/tb_axi_lite_mac_ctrl.vhd:352:7:@1215ns:(report note): =============== ALL TESTS PASSED (38 checks) ===============
+ghdl:info: simulation stopped by --stop-time @100us

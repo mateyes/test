@@ -1,0 +1,13 @@
+v 4
+file "/workspace/axi_lite_mac_ctrl/" "tb/tb_axi_lite_mac_ctrl.vhd" "be6d65daf7bead7f969bec6d2b6c8408f1452839" "20261126013343.810":
+  entity tb_axi_lite_mac_ctrl at 14( 863) + 0 on 17;
+  architecture sim of tb_axi_lite_mac_ctrl at 21( 998) + 0 on 18;
+file "/workspace/axi_lite_mac_ctrl/" "rtl/axi_lite_mac_ctrl.vhd" "d685fcc33493e3c5de4b26f9bce22dae2607f18a" "20261126013343.808":
+  entity axi_lite_mac_ctrl at 16( 1040) + 0 on 15;
+  architecture rtl of axi_lite_mac_ctrl at 69( 2768) + 0 on 16;
+file "/workspace/axi_lite_mac_ctrl/" "rtl/mac_mgmt_regs.vhd" "3d3fa8c12a05e4bdd3f7e58a8fb5cfc5581c3c75" "20261126013343.807":
+  entity mac_mgmt_regs at 11( 823) + 0 on 13;
+  architecture rtl of mac_mgmt_regs at 40( 2340) + 0 on 14;
+file "/workspace/axi_lite_mac_ctrl/" "rtl/axi_lite_slave.vhd" "8f64f254c8a686a04f49a411448ae06d8d70441f" "20261126013343.807":
+  entity axi_lite_slave at 10( 711) + 0 on 11;
+  architecture rtl of axi_lite_slave at 64( 3353) + 0 on 12;
